@@ -1,0 +1,120 @@
+@model WebApp.Models.Member
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex justify-content-between align-items-center">
+            <h6 class="m-0 font-weight-bold text-primary">Member Tables</h6>
+            <button class="btn btn-success" data-toggle="modal" data-target="#addModal">
+                Add more
+            </button>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Email</th>
+                            <th>Name</th>
+                            <th>GivenName</th>
+                            <th>SurName</th>
+                            <th>Role</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Id</th>
+                            <th>Email</th>
+                            <th>Name</th>
+                            <th>GivenName</th>
+                            <th>SurName</th>
+                            <th>Role</th>
+                            <th>Actions</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in ViewBag.Members)
+                        {
+                            <tr>
+                                <td class="hiddenTD">@item.MemberId</td>
+                                <td>@item.Email</td>
+                                <td>@item.Name</td>
+                                <td>@item.GivenName</td>
+                                <td>@item.SurName</td>
+                                <td>@item.Role</td>
+                                <td class="text-center">
+                                    <a class="btn btn-warning" href="/dashboard/member/edit/@item.MemberId">Edit</a>
+                                    <a class="btn btn-danger" href="/dashboard/member/delete/@item.MemberId">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Add Modal-->
+            <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add more</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            <form action="/dashboard/member/addmember" method="post">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <label for="name">Email:</label>
+                                        <input type="email" name="Email" id="Email" required class="form-control" />
+                                    </div>
+
+                                    <div class="col-6 mt-3">
+                                        <label for="name">Password:</label>
+                                        <input type="password" name="Password" id="Password" required class="form-control" />
+                                    </div>
+
+                                    <div class="col-6 mt-3">
+                                        <label for="name">Name:</label>
+                                        <input type="text" name="Name" id="Name" required class="form-control" />
+                                    </div>
+
+                                    <div class="col-6 mt-3">
+                                        <label for="name">Given name:</label>
+                                        <input type="text" name="GivenName" id="GivenName" required class="form-control" />
+                                    </div>
+
+                                    <div class="col-6 mt-3">
+                                        <label for="name">Surname:</label>
+                                        <input type="text" name="SurName" id="SurName" required class="form-control" />
+                                    </div>
+
+                                    <div class="col-12 mt-3">
+                                        <input class="" type="checkbox" value="Admin" id="flexCheckDefault" name="Role">
+                                        <label class="" for="flexCheckDefault">
+                                            Is Admin?
+                                        </label>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer mt-3">
+                                    <a class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</a>
+                                    <button class="btn btn-success" type="submit">Add</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->

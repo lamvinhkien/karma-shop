@@ -1,0 +1,50 @@
+@model WebApp.Models.Member
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Edit Member with ID: @Model.MemberId</h6>
+        </div>
+        <div class="card-body">
+            <form method="post" action="/dashboard/member/editmember">
+                <div class="row">
+                    <input type="hidden" name="MemberId" id="MemberId" value="@Model.MemberId" />
+
+                    <div class="col-12">
+                        <label for="name">Email:</label>
+                        <input type="text" name="Email" id="Email" required class="form-control" value="@Model.Email" />
+                    </div>
+
+                    <div class="col-12 mt-3">
+                        <label for="name">Name:</label>
+                        <input type="text" name="Name" id="name" required class="form-control" value="@Model.Name" />
+                    </div>
+
+                    <div class="col-6 mt-3">
+                        <label for="name">Given name:</label>
+                        <input type="text" name="GivenName" id="GivenName" required class="form-control" value="@Model.GivenName" />
+                    </div>
+
+                    <div class="col-6 mt-3">
+                        <label for="name">Surname:</label>
+                        <input type="text" name="SurName" id="SurName" required class="form-control" value="@Model.SurName" />
+                    </div>
+
+                    <div class="col-12 mt-3">
+                        <label for="name">Is Admin?</label>
+                        <input type="checkbox" name="Role" id="Role" value="Admin" checked="@(Model.Role == "Admin" ? true : false)"/>
+                    </div>
+                </div>
+
+                <div class="col-12 mt-4 d-flex justify-content-center">
+                    <a class="btn btn-outline-secondary w-50" type="button" href="/dashboard/member">Back</a>
+                    <button class="btn btn-success w-50" type="submit">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->

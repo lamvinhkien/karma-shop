@@ -1,0 +1,104 @@
+@model IEnumerable<Cart>
+
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Shopping Cart</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="/">Home<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="/cart">Cart</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Banner Area -->
+
+<!--================Cart Area =================-->
+<section class="cart_area">
+    <div class="container">
+        <div class="cart_inner">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img src="@item.ImageUrl" alt="@item.Name" class="img-fluid w-50">
+                                        </div>
+                                        <div class="media-body">
+                                            <p>@item.Name</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5>$@item.Price</h5>
+                                </td>
+                                <td>
+                                    <div class="product_count">
+                                        <input type="text" name="quantity" id="sst-@item.ProductId" maxlength="12" value="@item.Quantity" title="Quantity:"
+                                            class="input-text qty">
+                                        <button
+                                            onclick="var result = document.getElementById('sst-@item.ProductId'); var sst = result.value; if( !isNaN( sst )) { result.value++; $.post('/cart/edit', {'quantity': result.value, 'productId': @item.ProductId}, () => {window.location.reload()}) };return false;"
+                                            class="increase items-count" type="button"><i
+                                                class="lnr lnr-chevron-up"></i></button>
+                                        <button
+                                            onclick="var result = document.getElementById('sst-@item.ProductId'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 1 ) {result.value--; $.post('/cart/edit', {'quantity': result.value, 'productId': @item.ProductId}, () => {window.location.reload()})};return false;"
+                                            class="reduced items-count" type="button"><i
+                                                class="lnr lnr-chevron-down"></i></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5>$@(item.Price * item.Quantity)</h5>
+                                </td>
+                                <td>
+                                    <a href="/cart/delete/@item.ProductId" class="btn btn-outline-danger">X</a>
+                                </td>
+                            </tr>
+                        }
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                <h5>Subtotal</h5>
+                            </td>
+                            <td>
+                                <h5>$@Model.Sum(p => p.Quantity * p.Price)</h5>
+                            </td>
+                        </tr>
+                        <tr class="out_button_area">
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                <div class="checkout_btn_inner d-flex align-items-center">
+                                    <a class="gray_btn" href="/category">Continue Shopping</a>
+                                    <a class="primary-btn" href="/cart/checkout">Proceed to checkout</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Cart Area =================-->

@@ -1,0 +1,59 @@
+@model WebApp.Models.Invoice
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Invoice Tables</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>CartCode</th>
+                            <th>InvoiceDate</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Id</th>
+                            <th>CartCode</th>
+                            <th>InvoiceDate</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Actions</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in ViewBag.Invoices)
+                        {
+                            <tr>
+                                <td class="hiddenTD">@item.InvoiceId</td>
+                                <td class="hiddenTD">@item.CartCode</td>
+                                <td>@item.InvoiceDate</td>
+                                <td>@item.Email</td>
+                                <td>@item.Phone</td>
+                                <td>@item.Address</td>
+                                <td class="text-center">
+                                    <a class="btn btn-warning" href="/dashboard/invoice/detail/@item.InvoiceId">View</a>
+                                    <a class="btn btn-danger" href="/dashboard/invoice/delete/@item.InvoiceId">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->

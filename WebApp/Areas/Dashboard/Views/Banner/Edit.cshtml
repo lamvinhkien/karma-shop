@@ -1,0 +1,48 @@
+@model WebApp.Models.Banner
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Edit Banner with ID: @Model.BannerId</h6>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("Edit", "Banner", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(model => model.BannerId)
+                <div class="row">
+                    <div class="col-3">
+                        <label>Current Image:</label><br />
+                        <img src="@Model.ImageURL" alt="Current Image" class="w-100" />
+                    </div>
+
+                    <div class="col-9">
+                        <div class="col-12">
+                            <label for="name">Banner name:</label>
+                            <input type="text" name="Name" id="name" required class="form-control" value="@Model.Name" />
+                        </div>
+
+                        <div class="col-12 mt-3">
+                            <label for="description">Description:</label>
+                            <input type="text" name="Description" id="description" required class="form-control"
+                                value="@Model.Description" />
+                        </div>
+
+                        <div class="col-12 mt-3">
+                            <label for="fileUpload">Upload new image:</label>
+                            <input type="file" name="fileUpload" id="fileUpload" accept="image/*" class="form-control" />
+                        </div>
+
+                        <div class="col-12 mt-4 d-flex justify-content-center">
+                            <a class="btn btn-outline-secondary w-50" type="button" href="/dashboard/banner">Back</a>
+                            <button class="btn btn-success w-50" type="submit">Save</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->

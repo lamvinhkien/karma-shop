@@ -1,0 +1,129 @@
+@model WebApp.Models.Invoice
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">View Invoice with ID: @Model.InvoiceId</h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-4">
+                    <label for="name">Email:</label>
+                    <input type="text" name="Email" id="Email" readonly class="form-control" value="@Model.Email" />
+                </div>
+                <div class="col-4">
+                    <label for="name">Phone:</label>
+                    <input type="text" name="Phone" id="Phone" readonly class="form-control" value="@Model.Phone" />
+                </div>
+
+                <div class="col-4">
+                    <label for="name">PostCode:</label>
+                    <input type="text" name="PostCode" id="PostCode" readonly class="form-control" value="@Model.PostCode" />
+                </div>
+
+                <div class="col-4 mt-3">
+                    <label for="name">FirstName:</label>
+                    <input type="text" name="FirstName" id="FirstName" readonly class="form-control" value="@Model.FirstName" />
+                </div>
+                <div class="col-4 mt-3">
+                    <label for="name">LastName:</label>
+                    <input type="text" name="LastName" id="LastName" readonly class="form-control" value="@Model.LastName" />
+                </div>
+
+                <div class="col-4 mt-3">
+                    <label for="name">Address:</label>
+                    <input type="text" name="Address" id="Address" readonly class="form-control" value="@Model.Address" />
+                </div>
+
+                <div class="col-4 mt-3">
+                    <label for="name">State:</label>
+                    <input type="text" name="State" id="State" readonly class="form-control" value="@Model.State" />
+                </div>
+
+                <div class="col-4 mt-3">
+                    <label for="name">City:</label>
+                    <input type="text" name="City" id="City" readonly class="form-control" value="@Model.City" />
+                </div>
+
+                <div class="col-4 mt-3">
+                    <label for="name">Country:</label>
+                    <input type="text" name="Country" id="Country" readonly class="form-control" value="@Model.Country" />
+                </div>
+
+                 <div class="col-2 mt-3">
+                    <label for="name">CartCode:</label>
+                    <input type="text" name="CartCode" id="CartCode" readonly class="form-control" value="@Model.CartCode" />
+                </div>
+
+                <div class="col-2 mt-3">
+                    <label for="name">InvoiceDate:</label>
+                    <input type="text" name="InvoiceDate" id="InvoiceDate" readonly class="form-control" value="@Model.InvoiceDate" />
+                </div>
+
+                <div class="col-8 mt-3">
+                    <label for="name">Note:</label>
+                    <input type="text" name="Note" id="Note" readonly class="form-control" value="@Model.Note" />
+                </div>
+
+                <div class="col-12 mt-3">
+                    <h5 class="font-weight-bold px-2 py-3">Products Ordered:</h5>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                @{
+                                    decimal subtotal = 0; // Khởi tạo subtotal để tính tổng tiền
+                                }
+                                @foreach (var item in ViewBag.ProductByInvoice)
+                                {
+                                    <tr>
+                                        <td class="text-center w-25">
+                                            <img src="@item.ImageURL" alt="@item.Name" class="w-25" />
+                                        </td>
+                                        <td>@item.Name</td>
+                                        <td>$@item.ProductPrice</td>
+                                        <td>@item.Quantity</td>
+                                        <td>$@(item.ProductPrice * item.Quantity)</td>
+                                    </tr>
+                                    @(subtotal += item.ProductPrice * item.Quantity);
+                                    
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-12 mt-3">
+                        <h5 class="font-weight-bold text-right px-1" id="subtotal">Subtotal: <span class="text-danger">$@subtotal</span></h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 mt-3 d-flex">
+                <a class="btn btn-outline-secondary w-50" type="button" href="/dashboard/invoice">Back</a>
+                <a class="btn btn-outline-danger w-50" type="button" href="/dashboard/invoice/delete/@Model.InvoiceId">Delete</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->

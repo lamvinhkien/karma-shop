@@ -1,0 +1,64 @@
+@model WebApp.Models.Blog
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Edit Blog with ID: @Model.BlogId</h6>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("Edit", "Blog", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(model => model.BlogId)
+                <div class="row">
+                    <div class="col-3">
+                        <label>Current Image:</label><br />
+                        <img src="@Model.ImageURL" alt="Current Image" class="w-100" />
+                    </div>
+
+                    <div class="col-9">
+                        <div class="col-12 mt-3">
+                            <label for="fileUpload">Upload new image:</label>
+                            <input type="file" name="fileUpload" id="fileUpload" accept="image/*" class="form-control" />
+                        </div>
+
+                        <div class="col-12 mt-3">
+                            <label for="name">Blog name:</label>
+                            <input type="text" name="BlogName" id="name" required class="form-control"
+                                value="@Model.BlogName" />
+                        </div>
+
+                        <div class="col-12 mt-3">
+                            <label for="name">Author:</label>
+                            <input type="text" name="Author" id="name" required class="form-control"
+                                value="@Model.Author" />
+                        </div>
+
+                        <div class="col-12 mt-3">
+                            <label for="name">Tag:</label>
+                            <textarea type="text" name="Tag" id="name" required class="form-control" rows="6">@Model.Tag</textarea>
+                        </div>
+
+                        <div class="col-12 mt-3">
+                            <label for="description">Description:</label>
+                            <textarea type="text" name="Description" id="name" required class="form-control" rows="6">@Model.Description</textarea>
+                        </div>
+
+                        <div class="col-12 mt-3">
+                            <label for="description">Detail Description:</label>
+                            <textarea type="text" name="DetailDescription" id="name" required class="form-control" rows="6">@Model.DetailDescription</textarea>
+                        </div>
+
+                        <div class="col-12 mt-4 d-flex justify-content-center">
+                            <a class="btn btn-outline-secondary w-50" type="button" href="/dashboard/blog">Back</a>
+                            <button class="btn btn-success w-50" type="submit">Save</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
