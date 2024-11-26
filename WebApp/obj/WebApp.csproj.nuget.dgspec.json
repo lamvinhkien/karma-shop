@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\MyProject\\TMDT\\WebKarma\\webapp\\WebApp.csproj": {}
+    "C:\\MyProject\\aspNET\\WebKarma\\webapp\\WebApp.csproj": {}
   },
   "projects": {
-    "C:\\MyProject\\TMDT\\WebKarma\\webapp\\WebApp.csproj": {
+    "C:\\MyProject\\aspNET\\WebKarma\\webapp\\WebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\MyProject\\TMDT\\WebKarma\\webapp\\WebApp.csproj",
+        "projectUniqueName": "C:\\MyProject\\aspNET\\WebKarma\\webapp\\WebApp.csproj",
         "projectName": "WebApp",
-        "projectPath": "C:\\MyProject\\TMDT\\WebKarma\\webapp\\WebApp.csproj",
+        "projectPath": "C:\\MyProject\\aspNET\\WebKarma\\webapp\\WebApp.csproj",
         "packagesPath": "C:\\Users\\lamvi\\.nuget\\packages\\",
-        "outputPath": "C:\\MyProject\\TMDT\\WebKarma\\webapp\\obj\\",
+        "outputPath": "C:\\MyProject\\aspNET\\WebKarma\\webapp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lamvi\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -77,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

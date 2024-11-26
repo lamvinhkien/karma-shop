@@ -542,11 +542,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\MyProject\\TMDT\\WebKarma\\WebApp\\WebApp.csproj",
+      "projectUniqueName": "C:\\MyProject\\aspNET\\WebKarma\\WebApp\\WebApp.csproj",
       "projectName": "WebApp",
-      "projectPath": "C:\\MyProject\\TMDT\\WebKarma\\WebApp\\WebApp.csproj",
+      "projectPath": "C:\\MyProject\\aspNET\\WebKarma\\WebApp\\WebApp.csproj",
       "packagesPath": "C:\\Users\\lamvi\\.nuget\\packages\\",
-      "outputPath": "C:\\MyProject\\TMDT\\WebKarma\\WebApp\\obj\\",
+      "outputPath": "C:\\MyProject\\aspNET\\WebKarma\\WebApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\lamvi\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -612,7 +612,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,7 +1,7 @@
 USE Karma
 GO
 
-DROP TABLE Cart
+--DROP TABLE Cart
 CREATE TABLE Cart(
 	CartCode VARCHAR(32) NOT NULL,
 	ProductId INT NOT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE Cart(
 );
 GO
 
-DROP PROC AddCart
+--DROP PROC AddCart
 CREATE PROC AddCart(
 	@CartCode VARCHAR(32),
 	@ProductId INT,
@@ -24,11 +24,12 @@ as
 		INSERT INTO Cart(CartCode, ProductId, Quantity) VALUES (@CartCode, @ProductId, @Quantity);
 GO
 
+--DROP PROC DeleteCart
 CREATE PROC DeleteCart(
 	@ProductId INT
 )
 as
 	DELETE FROM Cart WHERE ProductId = @ProductId
+GO
 
-DROP PROC DeleteCart
 

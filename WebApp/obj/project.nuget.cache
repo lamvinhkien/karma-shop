@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bWHleIsjaUA=",
+  "dgSpecHash": "MnnT61nb4KY=",
   "success": true,
-  "projectFilePath": "C:\\MyProject\\TMDT\\WebKarma\\webapp\\WebApp.csproj",
+  "projectFilePath": "C:\\MyProject\\aspNET\\WebKarma\\webapp\\WebApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lamvi\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512",
     "C:\\Users\\lamvi\\.nuget\\packages\\microsoft.aspnetcore.authentication.google\\8.0.10\\microsoft.aspnetcore.authentication.google.8.0.10.nupkg.sha512",

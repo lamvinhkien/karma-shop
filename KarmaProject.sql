@@ -198,6 +198,7 @@ INSERT INTO Banner (Name, Description, ImageURL) VALUES
 GO
 
 
+
 -- DROP TABLE Blog
 CREATE TABLE Blog(
 	BlogId INT IDENTITY(1, 1) PRIMARY KEY NOT NULL,
@@ -302,10 +303,14 @@ INSERT INTO Blog (ImageURL, BlogName, Author, DatePost, Views, Comments,
                     </div>')
 GO
 
+
+-- METHOD GET CategoryName by ProductId
 SELECT Category.Name FROM Product JOIN Category ON Product.CategoryId = Category.CategoryId WHERE Product.ProductId = 5
 
+-- METHOD GET Invoice and Product
 SELECT InvoiceDetail.InvoiceId, InvoiceDetail.ProductId, InvoiceDetail.Quantity, InvoiceDetail.Price AS InvoicePrice, Product.Name, Product.Price AS ProductPrice, Product.ImageURL FROM  InvoiceDetail JOIN Product ON InvoiceDetail.ProductId = Product.ProductId WHERE  InvoiceDetail.InvoiceId = 'b15f28e7170847ba8303594d0fbde4b9';
 
+-- METHOD DELETE Invoice
 BEGIN TRANSACTION;
 
 DELETE FROM InvoiceDetail

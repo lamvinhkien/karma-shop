@@ -19,6 +19,7 @@ CREATE TABLE Invoice(
 )
 GO
 
+
 --DROP TABLE InvoiceDetail
 CREATE TABLE InvoiceDetail(
 	InvoiceId CHAR(32) NOT NULL,
@@ -27,6 +28,7 @@ CREATE TABLE InvoiceDetail(
 	Price DECIMAL(10, 2) NOT NULL
 )
 GO
+
 
 --DROP PROC AddInvoice
 CREATE PROC AddInvoice(
@@ -79,6 +81,7 @@ CREATE TABLE VnPay(
 GO
 
 
+
 CREATE PROC AddVnPay
 (	
 	@Amount BIGINT,
@@ -100,6 +103,8 @@ INSERT INTO VnPay VALUES
 GO
 
 
+
+--DROP PROC GetSalesMonthly
 CREATE PROC GetSalesMonthly(@Year INT)
 AS
 WITH CTE AS(
@@ -110,7 +115,9 @@ SELECT MONTH(InvoiceDate) AS [Month], AVG(Quantity * Quantity) AS Sales
 )SELECT AVG(Sales) FROM CTE;
 GO
 
-DROP PROC GetSalesByCategory
+
+
+--DROP PROC GetSalesByCategory
 CREATE PROC GetSalesByCategory(@Year INT)
 AS
 SELECT Category.CategoryId, Category.Name, BackgroundColor, HoverBackgroundColor, SUM(InvoiceDetail.Quantity * InvoiceDetail.Price) AS Sales
@@ -120,6 +127,9 @@ SELECT Category.CategoryId, Category.Name, BackgroundColor, HoverBackgroundColor
 	GROUP BY Category.CategoryId, Category.Name, BackgroundColor, HoverBackgroundColor;
 GO
 
+
+
+--DROP PROC GetSalesByMonth
 CREATE PROC GetSalesByMonth(@Year INT)
 AS
 SELECT MONTH(InvoiceDate) AS [Month], FORMAT (InvoiceDate, 'MMM') AS [MonthName], SUM(Quantity * Price) AS Sales
@@ -127,6 +137,7 @@ SELECT MONTH(InvoiceDate) AS [Month], FORMAT (InvoiceDate, 'MMM') AS [MonthName]
 	GROUP BY MONTH(InvoiceDate), FORMAT (InvoiceDate, 'MMM')
 	ORDER BY [Month]
 GO
+
 
 
 --Thẻ test:
